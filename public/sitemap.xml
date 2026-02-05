@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://documate.work/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://documate.work/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://documate.work/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://documate.work/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://documate.work/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://documate.work/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://documate.work/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://documate.work/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://documate.work/ru/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://documate.work/ar/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://documate.work/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://documate.work/hi/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://documate.work/bn/"/>
+    <lastmod>2026-02-05</lastmod>
+  </url>
+</urlset>
