@@ -49,7 +49,7 @@ export default function MainPage({ locale }: { locale: string }) {
     // Language switcher
     const handleLangChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const newLocale = e.target.value;
-        router.replace(pathname, { locale: newLocale });
+        router.replace(pathname, { locale: newLocale as any });
     };
 
     // Helper: Post-process text
