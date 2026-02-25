@@ -1,0 +1,15 @@
+{
+  "ci": {
+    "collect": { "numberOfRuns": 1 },
+    "assert": {
+      "assertions": {
+        "categories:seo": ["warn", { "minScore": 0.9 }],
+        "canonical": "warn",
+        "is-crawlable": "warn",
+        "structured-data": "warn",
+        "hreflang": "warn",
+        "http-status-code": "warn"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: LicenseRef-SA-NC-1.0
+User-agent: *
+Allow: /
+
+Sitemap: https://documate.work/sitemap.xml

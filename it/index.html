@@ -1,58 +1,14 @@
+<!--
+SPDX-FileCopyrightText: 2025 DocExpain
+SPDX-License-Identifier: LicenseRef-SA-NC-1.0
+-->
 <!doctype html>
-<!-- SPDX-License-Identifier: LicenseRef-SA-NC-1.0 -->
-<html lang="en">
+<html lang="it">
 
 <head>
   <meta charset="utf-8" />
-  <!-- Canonical hardening START -->
-  <script id="canonical-bootstrap">
-    (function () {
-      var ORIGIN = location.origin;
-      var PATH = (location.pathname.replace(/\/+$/, '/') || '/');
-      var LANG = PATH.indexOf('/fr/') !== -1 ? 'fr' : 'en';
-      var params = new URLSearchParams(location.search);
-      function keyFromQuery() { var t = (params.get('topic') || '').toLowerCase(); return (t === 'bill' || t === 'contract') ? t : null; }
-      function keyFromPath() {
-        var m = PATH.match(/^\/explain\/([^/]+)\/$/); if (m) { var en = m[1].toLowerCase(); if (en === 'bill' || en === 'contract') return en; }
-        m = PATH.match(/^\/fr\/expliquer\/([^/]+)\/$/); if (m) { var fr = m[1].toLowerCase(); if (fr === 'facture') return 'bill'; if (fr === 'contrat') return 'contract'; }
-        return null;
-      }
-      var key = keyFromQuery() || keyFromPath();
-      var canonicalAbs = !key
-        ? ORIGIN + (LANG === 'fr' ? '/fr/' : '/')
-        : (LANG === 'fr'
-          ? ORIGIN + '/fr/expliquer/' + (key === 'bill' ? 'facture' : 'contrat') + '/'
-          : ORIGIN + '/explain/' + key + '/');
-
-      // 1) Retire toutes les canonical existantes
-      var olds = Array.prototype.slice.call(document.querySelectorAll('link[rel="canonical"]'));
-      for (var i = 0; i < olds.length; i++) { olds[i].parentNode.removeChild(olds[i]); }
-
-      // 2) Crée UNE seule canonical, tout en haut du <head>
-      var link = document.createElement('link');
-      link.rel = 'canonical';
-      link.id = 'canonical-link';
-      link.href = canonicalAbs;
-      document.head.insertBefore(link, document.head.firstChild);
-
-      // 3) Aligne og:url et twitter:url
-      var og = document.querySelector('meta[property="og:url"]');
-      if (!og) { og = document.createElement('meta'); og.setAttribute('property', 'og:url'); document.head.appendChild(og); }
-      og.setAttribute('content', canonicalAbs);
-
-      var tw = document.querySelector('meta[name="twitter:url"]');
-      if (!tw) { tw = document.createElement('meta'); tw.setAttribute('name', 'twitter:url'); document.head.appendChild(tw); }
-      tw.setAttribute('content', canonicalAbs);
-
-      window.__DOCUMATE_TOPIC__ = key || null;
-      window.__DOCUMATE_CANONICAL__ = canonicalAbs;
-    })();
-  </script>
-  <!-- Canonical hardening END -->
-  <meta property="og:url" content="https://documate.work/">
-  <meta name="twitter:url" content="https://documate.work/">
-  <meta name="robots" content="index,follow">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow" />
 
   <!-- Google Search Console -->
   <meta name="google-site-verification" content="7fba15cbdb4cbaf7" />
@@ -61,9 +17,10 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9411950027978678"
     crossorigin="anonymous"></script>
 
-  <title id="meta-title">DocuMate — Understand your documents easily</title>
+  <title id="meta-title">DocuMate — Comprendi i tuoi documenti facilmente</title>
   <meta id="meta-desc" name="description"
-    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
+    content="DocuMate spiega contratti, bollette e documenti ufficiali in linguaggio semplice. Gratuito, privato, multilingue.">
+  <link id="canonical-link" rel="canonical" href="https://documate.work/it/" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
@@ -85,16 +42,15 @@
   <link rel="alternate" hreflang="bn" href="https://documate.work/bn/">
   <!-- Open Graph / Twitter, will be rewritten by JS on load -->
   <meta property="og:type" content="website">
-  <meta id="og-url" property="og:url" content="https://documate.work/">
-  <meta id="og-title" property="og:title" content="DocuMate — Understand your documents easily">
+  <meta id="og-url" property="og:url" content="https://documate.work/it/">
+  <meta id="og-title" property="og:title" content="DocuMate — Comprendi i tuoi documenti facilmente">
   <meta id="og-desc" property="og:description"
-    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
+    content="DocuMate spiega contratti, bollette e documenti ufficiali in linguaggio semplice. Gratuito, privato, multilingue.">
   <meta property="og:image" content="https://documate.work/og.jpg">
-  <script>window.__API_URL__ = 'https://documate.work/api/explain';</script>
   <meta name="twitter:card" content="summary_large_image">
-  <meta id="tw-title" name="twitter:title" content="DocuMate — Understand your documents easily">
+  <meta id="tw-title" name="twitter:title" content="DocuMate — Comprendi i tuoi documenti facilmente">
   <meta id="tw-desc" name="twitter:description"
-    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
+    content="DocuMate spiega contratti, bollette e documenti ufficiali in linguaggio semplice. Gratuito, privato, multilingue.">
   <meta name="twitter:image" content="https://documate.work/og.jpg">
 
   <!-- Favicon & app icons -->
@@ -728,15 +684,6 @@
       <p class="legal" id="seo-text">Contracts, rental agreements, utility bills, bank letters, insurance terms, general
         conditions, and more.</p>
     </div>
-    <nav class="topics" id="topics-en" style="margin:10px 0;">
-      <a href="/explain/bill/">Explain a bill</a> ·
-      <a href="/explain/contract/">Explain a contract</a>
-    </nav>
-
-    <section class="card" id="faq-card">
-      <h3 id="faq-title">FAQ</h3>
-      <div id="faq"></div>
-    </section>
   </main>
 
   <footer>
@@ -1329,62 +1276,6 @@
     })();
   </script>
 
-  <script>
-    (function () {
-      const lang = (document.documentElement.lang || 'en').slice(0, 2);
-
-      // Map path -> canonical + FAQ per language (minimal content is enough for SEO audit)
-      const TOPICS = {
-        '/explain/bill/': {
-          en: { canonical: '/explain/bill/', faq: [{ q: 'How do I understand a utility bill?', a: 'Upload or paste it. DocuMate highlights the key parts and explains them in plain English.' }] },
-          fr: { canonical: '/fr/expliquer/facture/', faq: [{ q: 'Comment comprendre une facture ?', a: 'Collez ou uploadez le document. DocuMate explique les éléments importants en langage simple.' }] }
-        },
-        '/explain/contract/': {
-          en: { canonical: '/explain/contract/', faq: [{ q: 'How to read a contract?', a: 'Paste the contract. DocuMate extracts clauses and explains them in plain language.' }] },
-          fr: { canonical: '/fr/expliquer/contrat/', faq: [{ q: 'Comment lire un contrat ?', a: 'Collez le contrat. DocuMate résume les clauses et les explique simplement.' }] }
-        },
-        '/fr/expliquer/facture/': null, // will be handled when FR page loads
-        '/fr/expliquer/contrat/': null
-      };
-
-      // Detect topic from current path (normalize trailing slash)
-      const p = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
-      let conf = TOPICS[p];
-      if (!conf) {
-        // if we are on FR topic but running EN file, map back
-        if (p === '/fr/expliquer/facture/') conf = TOPICS['/explain/bill/'];
-        if (p === '/fr/expliquer/contrat/') conf = TOPICS['/explain/contract/'];
-      }
-      if (!conf) return; // not a topic page
-
-      const data = conf[lang] || conf.en;
-      const absolute = location.origin + data.canonical;
-
-      // --- set canonical
-      const link = document.getElementById('canonical-link') || document.querySelector('link[rel="canonical"]');
-      if (link) link.href = absolute;
-
-      // --- JSON-LD FAQ (idempotent)
-      if (!document.getElementById('ld-faq')) {
-        const faq = {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": data.faq.map(x => ({
-            "@type": "Question",
-            "name": x.q,
-            "acceptedAnswer": { "@type": "Answer", "text": x.a }
-          }))
-        };
-        const s = document.createElement('script');
-        s.type = 'application/ld+json';
-        s.id = 'ld-faq';
-        s.textContent = JSON.stringify(faq);
-        document.head.appendChild(s);
-      }
-    })();
-  </script>
-
-  <script defer src="/scripts/topics-router.js"></script>
 </body>
 
 </html>

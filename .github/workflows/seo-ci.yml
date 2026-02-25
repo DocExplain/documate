@@ -1,0 +1,95 @@
+name: SEO & Smoke Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to test (default: https://documate.work)"
+        required: false
+        default: "https://documate.work"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://documate.work' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright module
+        run: npm i --no-save playwright@1.47.2
+
+      - name: Install Playwright browsers
+        run: npx playwright@1.47.2 install --with-deps chromium
+
+      - name: Run smoke checks
+        run: node scripts/seo-smoke.cjs "$BASE_URL"
+
+  warmup:
+    name: Warmup
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://documate.work' }}
+    steps:
+      - name: Warm up site
+        run: |
+          set -e
+          code=$(curl -s -o /dev/null -w "%{http_code}" -IL "$BASE_URL")
+          if [ "$code" != "200" ]; then
+            echo "::error file=warmup::Unexpected status $code for $BASE_URL"
+            exit 1
+          fi
+
+  assets:
+    name: Assets 200
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://documate.work' }}
+    steps:
+      - name: Check assets return 200
+        run: |
+          set -e
+          urls=(
+            "$BASE_URL/sitemap.xml"
+            "$BASE_URL/robots.txt"
+            "$BASE_URL/site.webmanifest"
+            "$BASE_URL/icon-192.png"
+            "$BASE_URL/icon-512.png"
+          )
+          for u in "${urls[@]}"; do
+            echo "HEAD $u"
+            code=$(curl -s -o /dev/null -w "%{http_code}" -I "$u")
+            if [ "$code" != "200" ]; then
+              echo "::error file=assets::Unexpected status $code for $u"
+              exit 1
+            fi
+          done
+          echo "All assets OK"
+
+  lighthouse:
+    name: Lighthouse SEO
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://documate.work' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Lighthouse CI (SEO only)
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            ${{ env.BASE_URL }}/
+            ${{ env.BASE_URL }}/explain/bill/
+            ${{ env.BASE_URL }}/explain/contract/
+            ${{ env.BASE_URL }}/fr/
+            ${{ env.BASE_URL }}/fr/expliquer/facture/
+            ${{ env.BASE_URL }}/fr/expliquer/contrat/
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
