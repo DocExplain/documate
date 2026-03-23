@@ -921,7 +921,10 @@
 
       var base = 'https://documate.work';
       var path = LANG_PATH[lang] || '/';
-      setAttr('canonical-link', 'href', base + path);
+      // Ne pas écraser si un topic a déjà fixé la canonical (ex: ?topic=bill)
+      if (!window.__DOCUMATE_CANONICAL__ || window.__DOCUMATE_CANONICAL__ === base + '/') {
+        setAttr('canonical-link', 'href', base + path);
+      }
       setAttr('og-url', 'content', base + path);
       setAttr('og-title', 'content', T.htmlTitle);
       setAttr('og-desc', 'content', T.htmlDesc);
