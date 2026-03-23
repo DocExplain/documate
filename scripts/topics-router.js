@@ -49,9 +49,11 @@
 
   // 3) Poser la canonical immédiatement (id ou rel=canonical)
   var link = document.getElementById("canonical-link")
-          || document.getElementById("link-canonical")
           || document.querySelector('link[rel="canonical"]');
-  if (link) link.href = canonicalAbs;
+  if (link) {
+    link.href = canonicalAbs;
+    link.id = "canonical-link"; // Assure l'ID pour le prochain passage
+  }
 
   // 4) Mettre à jour og:url / twitter:url si présents
   var og = document.querySelector('meta[property="og:url"]');

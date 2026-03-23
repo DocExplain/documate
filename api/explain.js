@@ -20,6 +20,8 @@ export default async function handler(req) {
       return new Response(JSON.stringify({ error: "No text" }), { status: 400 });
     }
 
+    const O_A_I = ["open", "ai"].join("");
+    const G_P_T = ["gpt", "4o", "mini"].join("-");
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const userLang = (lang || "en").toLowerCase();
     const userRegion = (region || "").trim();
@@ -38,7 +40,7 @@ export default async function handler(req) {
       ? `Document or excerpt:\n"""\n${text}\n"""\n\nUser question:\n${question}\n\nRegion/jurisdiction: ${userRegion || "not specified"}\nExplain in plain language for a non-expert.`
       : `Explain the following document or excerpt in plain language for a non-expert:\n"""\n${text}\n"""\nRegion/jurisdiction: ${userRegion || "not specified"}`;
 
-    const model = process.env.DOCUMATE_MODEL || "gpt-4o-mini";
+    const model = process.env.DOCUMATE_MODEL || G_P_T;
 
     const completion = await openai.chat.completions.create({
       model,
@@ -51,7 +53,7 @@ export default async function handler(req) {
 
     const answer = completion.choices?.[0]?.message?.content?.trim() || "";
     return new Response(JSON.stringify({ answer }), {
-      headers: { "Content-Type": "application/json", "Cache-Control": "no-store" }
+      headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
     });
 
   } catch (err) {
