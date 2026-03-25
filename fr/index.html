@@ -1,7 +1,5 @@
 <!doctype html>
-<!-- SPDX-License-Identifier: LicenseRef-SA-NC-1.0 -->
 <html lang="fr">
-
 <head>
   <meta charset="utf-8" />
   <!-- Canonical hardening START -->
@@ -49,8 +47,8 @@
     })();
   </script>
   <!-- Canonical hardening END -->
-  <meta property="og:url" content="https://documate.work/fr/">
-  <meta name="twitter:url" content="https://documate.work/fr/">
+  <meta property="og:url" content="https://documate.work/">
+  <meta name="twitter:url" content="https://documate.work/">
   <meta name="robots" content="index,follow">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -58,12 +56,12 @@
   <meta name="google-site-verification" content="7fba15cbdb4cbaf7" />
 
   <!-- AdSense global (keep once per page) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9411950027978678"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8878347479089931"
     crossorigin="anonymous"></script>
 
-  <title id="meta-title">DocuMate — Comprenez vos documents facilement</title>
+  <title id="meta-title">DocuMate — Understand your documents easily</title>
   <meta id="meta-desc" name="description"
-    content="DocuMate explique contrats, factures et documents officiels en langage simple. Gratuit, privé, multilingue.">
+    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
@@ -85,15 +83,16 @@
   <link rel="alternate" hreflang="bn" href="https://documate.work/bn/">
   <!-- Open Graph / Twitter, will be rewritten by JS on load -->
   <meta property="og:type" content="website">
-  <meta id="og-url" property="og:url" content="https://documate.work/fr/">
-  <meta id="og-title" property="og:title" content="DocuMate — Comprenez vos documents facilement">
+  <meta id="og-url" property="og:url" content="https://documate.work/">
+  <meta id="og-title" property="og:title" content="DocuMate — Understand your documents easily">
   <meta id="og-desc" property="og:description"
-    content="DocuMate explique contrats, factures et documents officiels en langage simple. Gratuit, privé, multilingue.">
+    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
   <meta property="og:image" content="https://documate.work/og.jpg">
+  <script>window.__API_URL__ = 'https://documate.work/api/explain';</script>
   <meta name="twitter:card" content="summary_large_image">
-  <meta id="tw-title" name="twitter:title" content="DocuMate — Comprenez vos documents facilement">
+  <meta id="tw-title" name="twitter:title" content="DocuMate — Understand your documents easily">
   <meta id="tw-desc" name="twitter:description"
-    content="DocuMate explique contrats, factures et documents officiels en langage simple. Gratuit, privé, multilingue.">
+    content="Paste or upload contracts, bills and official documents. Clear explanations, private, multilingual. OCR for images/PDF.">
   <meta name="twitter:image" content="https://documate.work/og.jpg">
 
   <!-- Favicon & app icons -->
@@ -142,7 +141,26 @@
       margin: 0;
       font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--ink);
-      background: var(--bg)
+      background: var(--bg);
+      /* Default font-family, will be overridden by tailwind/nextjs if present */
+    }
+
+    /* App Store Badges */
+    .store-badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .store-badge {
+      height: 50px;
+      transition: transform 0.2s;
+    }
+
+    .store-badge:hover {
+      transform: scale(1.05);
     }
 
     header {
@@ -606,7 +624,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="wrap">
@@ -642,17 +659,36 @@
       <div class="hero">
         <h2 id="hero-title">Explain contracts, bills & official documents in plain language</h2>
         <p id="hero-sub">Free, private, multilingual. Not legal advice.</p>
+        <div class="store-badges">
+          <a href="https://apps.apple.com/app/documate-ai/id6759288550" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1708473600"
+              class="store-badge" alt="Download on the App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.documate.app" target="_blank" rel="noopener noreferrer">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              class="store-badge" style="height: 70px; margin-top: -10px;" alt="Get it on Google Play">
+          </a>
+        </div>
       </div>
-      <nav class="topics" id="topics-fr" style="margin:10px 0;">
-        <a href="/fr/expliquer/facture/">Expliquer une facture</a> ·
-        <a href="/fr/expliquer/contrat/">Expliquer un contrat</a>
-      </nav>
-      <!-- File input (customized & translatable) -->
-      <div class="file-row">
-        <input type="file" id="file" accept=".pdf,.txt,.docx,.png,.jpg,.jpeg,.webp" class="file-native" />
+      <!-- Static Demo Mode -->
+      <div
+        style="background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+        <h4 style="margin:0 0 8px; color: #1e40af;">Try the interactive demo</h4>
+        <p style="margin:0 0 12px; font-size: 14px; color: #3b82f6;">Select an example document below to see how
+          DocuMate simplifies it.</p>
+        <div class="row">
+          <button type="button" class="btn secondary" onclick="loadDemo('parking')">Parking Ticket</button>
+          <button type="button" class="btn secondary" onclick="loadDemo('visa')">Visa Letter</button>
+        </div>
+      </div>
+
+      <!-- File input (Disabled for demo) -->
+      <div class="file-row" style="opacity: 0.5; pointer-events: none;">
+        <input type="file" id="file" accept=".pdf,.txt,.docx,.png,.jpg,.jpeg,.webp" class="file-native" disabled />
         <label for="file" class="btn" id="btnChooseFile">Choose a file</label>
-        <button type="button" class="btn secondary" id="btnUseCamera">Use camera</button>
-        <input type="file" id="camera" accept="image/*" capture="environment" class="file-native" />
+        <button type="button" class="btn secondary" id="btnUseCamera" disabled>Use camera</button>
+        <input type="file" id="camera" accept="image/*" capture="environment" class="file-native" disabled />
         <span id="fileName" class="hint">No file chosen</span>
       </div>
       <div id="ocr-status" class="status ocr-status" hidden aria-live="polite" aria-atomic="true"></div>
@@ -662,10 +698,10 @@
       <div class="hint" id="paste-hint">Your document stays on your device until you click an action below.</div>
       </div>
 
-      <!-- Region / Country -->
-      <label for="region" style="margin-top:12px;" id="label-region">Region / Country (optional, for local
+      <!-- Region / Country (Disabled) -->
+      <label for="region" style="margin-top:12px; opacity: 0.5;" id="label-region">Region / Country (optional, for local
         rules)</label>
-      <input type="text" id="region" placeholder="e.g., United States / California" />
+      <input type="text" id="region" placeholder="e.g., United States / California" disabled style="opacity: 0.5;" />
 
       <div class="row" style="margin-top:10px;">
         <button id="btnExplainAll" class="btn">Explain the whole document</button>
@@ -674,12 +710,13 @@
         <button id="btnLoad" class="btn secondary">Load last</button>
       </div>
 
-      <label for="question" style="margin-top:16px;" id="label-ask">Ask a specific question about a passage
+      <label for="question" style="margin-top:16px; opacity:0.5" id="label-ask">Ask a specific question about a passage
         (optional)</label>
-      <input type="text" id="question" placeholder="e.g. What does this clause mean? / Explain like I'm five" />
+      <input type="text" id="question" placeholder="e.g. What does this clause mean? / Explain like I'm five" disabled
+        style="opacity:0.5" />
       <div class="row" style="margin-top:10px;">
-        <button id="btnAskSel" class="btn">Ask about selection</button>
-        <button id="btnAskAll" class="btn secondary">Ask about whole document</button>
+        <button id="btnAskSel" class="btn" disabled style="opacity:0.5">Ask about selection</button>
+        <button id="btnAskAll" class="btn secondary" disabled style="opacity:0.5">Ask about whole document</button>
       </div>
 
       <div class="badges">
@@ -693,7 +730,7 @@
 
       <div class="ads">
         <!-- Ad slot (render only after consent + push) -->
-        <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-9411950027978678"
+        <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-8878347479089931"
           data-ad-slot="PASTE_YOUR_AD_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>
           if (location.search.includes("adtest=1")) {
@@ -704,10 +741,6 @@
           }
         </script>
       </div>
-    </section>
-    <section class="card" id="faq-card">
-      <h3 id="faq-title">FAQ</h3>
-      <div id="faq"></div>
     </section>
 
     <!-- Privacy & Trust (collapsible, accessible, no-JS needed) -->
@@ -752,6 +785,15 @@
       <p class="legal" id="seo-text">Contracts, rental agreements, utility bills, bank letters, insurance terms, general
         conditions, and more.</p>
     </div>
+    <nav class="topics" id="topics-fr" style="margin:10px 0;">
+      <a href="/fr/expliquer/facture/">Expliquer une facture</a> ·
+      <a href="/fr/expliquer/contrat/">Expliquer un contrat</a>
+    </nav>
+
+    <section class="card" id="faq-card">
+      <h3 id="faq-title">FAQ</h3>
+      <div id="faq"></div>
+    </section>
   </main>
 
   <footer>
@@ -759,7 +801,9 @@
       <strong>DocuMate</strong> — <span id="footer1">Free document explanations powered by AI</span> ·
       <a href="#" id="openConsent"> <span id="footer-consent">Ad consent</span> </a> ·
       <a href="#" id="clearLocal"><span id="footer-clear">Clear local data</span></a> ·
-      <a href="/privacy.html">Privacy / Confidentialité</a>
+      <a href="/privacy.html">Privacy / Confidentialité</a> ·
+      <a href="#contact" data-tally-open="VLZ28N" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Contact
+        Us</a>
     </p>
   </footer>
 
@@ -874,7 +918,10 @@
 
       var base = 'https://documate.work';
       var path = LANG_PATH[lang] || '/';
-      setAttr('canonical-link', 'href', base + path);
+      // Ne pas écraser si un topic a déjà fixé la canonical (ex: ?topic=bill)
+      if (!window.__DOCUMATE_CANONICAL__ || window.__DOCUMATE_CANONICAL__ === base + '/') {
+        setAttr('canonical-link', 'href', base + path);
+      }
       setAttr('og-url', 'content', base + path);
       setAttr('og-title', 'content', T.htmlTitle);
       setAttr('og-desc', 'content', T.htmlDesc);
@@ -897,9 +944,17 @@
     // Determine current language
     let currentLang;
     (function () {
-      var initial = (document.documentElement.lang || 'en').toLowerCase();
-      currentLang = initial;
-      document.addEventListener('DOMContentLoaded', function () { applyI18n(initial); });
+      var initial = guessLang(); // Use browser language if path doesn't specify
+      var pathLang = guessLangFromPath();
+
+      // Auto-redirect if we are on the root and the browser lang is supported
+      if (!pathLang && initial !== 'en' && LANG_PATH[initial]) {
+        location.href = LANG_PATH[initial];
+        return;
+      }
+
+      currentLang = pathLang || 'en';
+      document.addEventListener('DOMContentLoaded', function () { applyI18n(currentLang); });
     })();
     // Handle language selector: instant update + optional redirect for SEO-friendly URLs
     const langSel = document.getElementById('langSel');
@@ -938,40 +993,49 @@
     }
 
     // ----------------- Buttons -----------------
+    const DEMO_TEXTS = {
+      parking: {
+        text: "CITY OF METROPOLIS\n\nPARKING VIOLATION NOTICE\n\nIssue Date: 12/04/2026\nViolation Code: 402(A) - Parking in a prohibited zone (Street Sweeping).\nFine Amount: $75.00\nPayment Due: 01/04/2027\n\nFailure to pay or contest this citation within 30 days will result in additional penalties up to $150.00 and potential vehicle impoundment. To contest, refer to section 8(b) of the municipal code on the reverse side of this notice.",
+        result: "### 💡 What you need to know:\n\nYou received a parking ticket for parking during **Street Sweeping**.\n\n* **Amount to pay:** $75.00\n* **Deadline:** January 4, 2027\n\n**⚠️ Warning:** If you don't pay or contest it within 30 days, the fine will increase to $150.00 and your car could be towed.\n\n*(To unlock custom analysis and draft an appeal letter, download DocuMate on the App Store or Google Play!)*"
+      },
+      visa: {
+        text: "IMMIGRATION AND NATIONALITY ACT\nSECTION 214(B)\n\nDear Applicant,\n\nWe regret to inform you that your application for a nonimmigrant visa has been denied under section 214(b) of the INA. A denial under section 214(b) means that you were not able to demonstrate that your intended activities in the United States would be consistent with the classification of the nonimmigrant visa for which you applied. You have not established sufficient strong ties to your home country to overcome the presumption of immigrant intent.\n\nThis decision is not permanent. You may reapply for a visa at any time if you can present compelling new evidence.",
+        result: "### 💡 What you need to know:\n\nYour visa application was **denied**.\n\n* **The Reason:** The officer believes you might want to stay in the US permanently because you didn't show enough \"strong ties\" to your home country (like a permanent job, property, or family).\n* **The Good News:** This denial is **not permanent**.\n\n**📝 Next Steps:** You can apply again anytime, but you must bring *new* documents that strongly prove you intend to return home.\n\n*(For a personalized checklist of documents to bring next time, download DocuMate on the App Store or Google Play!)*"
+      }
+    };
+
+    window.loadDemo = function (type) {
+      docText.value = DEMO_TEXTS[type].text;
+      result.innerHTML = '';
+    };
+
     document.getElementById('btnExplainAll').addEventListener('click', async () => {
       const all = docText.value.trim();
       if (!all) { alert(window.STR?.noText || 'No text to process yet.'); return; }
-      setLoading(true);
-      try { result.textContent = await callExplain({ text: all }); }
-      catch (e) { result.textContent = 'Error: ' + e.message; }
-      finally { setLoading(false); }
+
+      // Static Demo logic
+      let matchedResult = null;
+      for (const [key, demo] of Object.entries(DEMO_TEXTS)) {
+        if (all === demo.text) matchedResult = demo.result;
+      }
+
+      if (matchedResult) {
+        setLoading(true);
+        setTimeout(() => {
+          result.innerHTML = matchedResult;
+          setLoading(false);
+        }, 1500); // Simulate API delay
+      } else {
+        // Fallback to promote app
+        result.innerHTML = "### 📱 App Download Required\n\nTo analyze your own custom documents, please download the DocuMate app from the App Store or Google Play. \n\nWe ensure **Zero Data Retention** and your privacy is our top priority!";
+      }
     });
-    document.getElementById('btnExplainSel').addEventListener('click', async () => {
-      const sel = getSelectionTextFromTextarea(docText);
-      if (!sel) { alert(window.STR?.nothingSel || 'No selection'); return; }
-      setLoading(true);
-      try { result.textContent = await callExplain({ text: sel }); }
-      catch (e) { result.textContent = 'Error: ' + e.message; }
-      finally { setLoading(false); }
+
+    document.getElementById('btnExplainSel').addEventListener('click', () => {
+      alert("Select 'Explain the whole document' to view the demo.");
     });
-    document.getElementById('btnAskSel').addEventListener('click', async () => {
-      const sel = getSelectionTextFromTextarea(docText);
-      if (!sel) { alert(window.STR?.nothingSel || 'No selection'); return; }
-      const q = document.getElementById('question').value.trim() || null;
-      setLoading(true);
-      try { result.textContent = await callExplain({ text: sel, question: q }); }
-      catch (e) { result.textContent = 'Error: ' + e.message; }
-      finally { setLoading(false); }
-    });
-    document.getElementById('btnAskAll').addEventListener('click', async () => {
-      const all = docText.value.trim();
-      if (!all) { alert(window.STR?.noText || 'No text to process yet.'); return; }
-      const q = document.getElementById('question').value.trim() || null;
-      setLoading(true);
-      try { result.textContent = await callExplain({ text: all, question: q }); }
-      catch (e) { result.textContent = 'Error: ' + e.message; }
-      finally { setLoading(false); }
-    });
+    document.getElementById('btnAskSel').addEventListener('click', () => { });
+    document.getElementById('btnAskAll').addEventListener('click', () => { });
     document.getElementById('btnSave').addEventListener('click', () => {
       localStorage.setItem('documate_last_doc', docText.value || '');
       localStorage.setItem('documate_last_region', region.value || '');
@@ -1344,62 +1408,6 @@
     })();
   </script>
 
-  <script>
-    (function () {
-      const lang = (document.documentElement.lang || 'en').slice(0, 2);
-
-      // Map path -> canonical + FAQ per language (minimal content is enough for SEO audit)
-      const TOPICS = {
-        '/explain/bill/': {
-          en: { canonical: '/explain/bill/', faq: [{ q: 'How do I understand a utility bill?', a: 'Upload or paste it. DocuMate highlights the key parts and explains them in plain English.' }] },
-          fr: { canonical: '/fr/expliquer/facture/', faq: [{ q: 'Comment comprendre une facture ?', a: 'Collez ou uploadez le document. DocuMate explique les éléments importants en langage simple.' }] }
-        },
-        '/explain/contract/': {
-          en: { canonical: '/explain/contract/', faq: [{ q: 'How to read a contract?', a: 'Paste the contract. DocuMate extracts clauses and explains them in plain language.' }] },
-          fr: { canonical: '/fr/expliquer/contrat/', faq: [{ q: 'Comment lire un contrat ?', a: 'Collez le contrat. DocuMate résume les clauses et les explique simplement.' }] }
-        },
-        '/fr/expliquer/facture/': null, // will be handled when FR page loads
-        '/fr/expliquer/contrat/': null
-      };
-
-      // Detect topic from current path (normalize trailing slash)
-      const p = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
-      let conf = TOPICS[p];
-      if (!conf) {
-        // if we are on FR topic but running EN file, map back
-        if (p === '/fr/expliquer/facture/') conf = TOPICS['/explain/bill/'];
-        if (p === '/fr/expliquer/contrat/') conf = TOPICS['/explain/contract/'];
-      }
-      if (!conf) return; // not a topic page
-
-      const data = conf[lang] || conf.en;
-      const absolute = location.origin + data.canonical;
-
-      // --- set canonical
-      const link = document.getElementById('canonical-link') || document.querySelector('link[rel="canonical"]');
-      if (link) link.href = absolute;
-
-      // --- JSON-LD FAQ (idempotent)
-      if (!document.getElementById('ld-faq')) {
-        const faq = {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": data.faq.map(x => ({
-            "@type": "Question",
-            "name": x.q,
-            "acceptedAnswer": { "@type": "Answer", "text": x.a }
-          }))
-        };
-        const s = document.createElement('script');
-        s.type = 'application/ld+json';
-        s.id = 'ld-faq';
-        s.textContent = JSON.stringify(faq);
-        document.head.appendChild(s);
-      }
-    })();
-  </script>
-
   <script defer src="/scripts/topics-router.js"></script>
 </body>
-
 </html>
