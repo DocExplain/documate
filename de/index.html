@@ -995,17 +995,29 @@
     // ----------------- Buttons -----------------
     const DEMO_TEXTS = {
       parking: {
-        text: "CITY OF METROPOLIS\n\nPARKING VIOLATION NOTICE\n\nIssue Date: 12/04/2026\nViolation Code: 402(A) - Parking in a prohibited zone (Street Sweeping).\nFine Amount: $75.00\nPayment Due: 01/04/2027\n\nFailure to pay or contest this citation within 30 days will result in additional penalties up to $150.00 and potential vehicle impoundment. To contest, refer to section 8(b) of the municipal code on the reverse side of this notice.",
-        result: "### 💡 What you need to know:\n\nYou received a parking ticket for parking during **Street Sweeping**.\n\n* **Amount to pay:** $75.00\n* **Deadline:** January 4, 2027\n\n**⚠️ Warning:** If you don't pay or contest it within 30 days, the fine will increase to $150.00 and your car could be towed.\n\n*(To unlock custom analysis and draft an appeal letter, download DocuMate on the App Store or Google Play!)*"
+        en: { text: "CITY OF METROPOLIS\n\nPARKING VIOLATION NOTICE\n\nIssue Date: 12/04/2026\nViolation Code: 402(A) - Parking in a prohibited zone (Street Sweeping).\nFine Amount: $75.00\nPayment Due: 01/04/2027\n\nFailure to pay or contest this citation within 30 days will result in additional penalties up to $150.00 and potential vehicle impoundment.", result: "### 💡 What you need to know:\n\nYou received a parking ticket for parking during **Street Sweeping**.\n\n* **Amount to pay:** $75.00\n* **Deadline:** January 4, 2027\n\n**⚠️ Warning:** If you don't pay or contest it within 30 days, the fine will increase to $150.00 and your car could be towed.\n\n*(Download DocuMate on the App Store or Google Play to analyze your own documents!)*" },
+        fr: { text: "VILLE DE PARIS\n\nAVIS D'INFRACTION AU STATIONNEMENT\n\nDate : 12/04/2026\nCode d'infraction : 402(A) - Stationnement en zone interdite (Nettoyage de rue).\nMontant de l'amende : 35,00 €\nDate limite de paiement : 01/05/2027\n\nEn cas de non-paiement dans les 30 jours, des pénalités supplémentaires allant jusqu'à 75,00 € s'appliqueront.", result: "### 💡 Ce que vous devez savoir :\n\nVous avez reçu une amende pour **stationnement pendant le nettoyage de rue**.\n\n* **Montant à payer :** 35,00 €\n* **Date limite :** 1er mai 2027\n\n**⚠️ Attention :** Sans paiement sous 30 jours, l'amende monte à 75,00 €.\n\n*(Téléchargez DocuMate sur l'App Store ou Google Play pour analyser vos propres documents !)*" },
+        de: { text: "STADT BERLIN\n\nPARKVERSTOSS-BENACHRICHTIGUNG\n\nDatum: 12.04.2026\nVerstoß: 402(A) - Parken in einer Verbotszone (Straßenreinigung).\nBußgeld: 35,00 €\nZahlungsfrist: 01.05.2027\n\nBei Nichtzahlung innerhalb von 30 Tagen fallen zusätzliche Gebühren bis zu 75,00 € an.", result: "### 💡 Was Sie wissen müssen:\n\nSie haben einen Strafzettel für **Parken während der Straßenreinigung** erhalten.\n\n* **Betrag:** 35,00 €\n* **Frist:** 1. Mai 2027\n\n**⚠️ Achtung:** Bei Nichtzahlung in 30 Tagen erhöht sich das Bußgeld auf 75,00 €.\n\n*(Laden Sie DocuMate im App Store oder Google Play herunter!)*" },
+        es: { text: "MUNICIPIO DE MADRID\n\nNOTIFICACIÓN DE INFRACCIÓN DE ESTACIONAMIENTO\n\nFecha: 12/04/2026\nCódigo: 402(A) - Estacionamiento en zona prohibida.\nImporte: 35,00 €\nFecha límite: 01/05/2027", result: "### 💡 Lo que necesita saber:\n\nRecibió una multa por **estacionamiento en zona prohibida**.\n\n* **Importe:** 35,00 €\n* **Fecha límite:** 1 de mayo de 2027\n\n**⚠️ Atención:** Sin pago en 30 días, la multa sube a 75,00 €.\n\n*(¡Descargue DocuMate en App Store o Google Play!)*" },
+        it: { text: "COMUNE DI ROMA\n\nAVVISO DI VIOLAZIONE DEL DIVIETO DI SOSTA\n\nData: 12/04/2026\nCodice: 402(A) - Sosta in zona vietata.\nImporto: 35,00 €\nScadenza: 01/05/2027", result: "### 💡 Cosa devi sapere:\n\nHai ricevuto una multa per **sosta in zona vietata**.\n\n* **Importo:** 35,00 €\n* **Scadenza:** 1 maggio 2027\n\n*(Scarica DocuMate su App Store o Google Play per analizzare i tuoi documenti!)*" }
       },
       visa: {
-        text: "IMMIGRATION AND NATIONALITY ACT\nSECTION 214(B)\n\nDear Applicant,\n\nWe regret to inform you that your application for a nonimmigrant visa has been denied under section 214(b) of the INA. A denial under section 214(b) means that you were not able to demonstrate that your intended activities in the United States would be consistent with the classification of the nonimmigrant visa for which you applied. You have not established sufficient strong ties to your home country to overcome the presumption of immigrant intent.\n\nThis decision is not permanent. You may reapply for a visa at any time if you can present compelling new evidence.",
-        result: "### 💡 What you need to know:\n\nYour visa application was **denied**.\n\n* **The Reason:** The officer believes you might want to stay in the US permanently because you didn't show enough \"strong ties\" to your home country (like a permanent job, property, or family).\n* **The Good News:** This denial is **not permanent**.\n\n**📝 Next Steps:** You can apply again anytime, but you must bring *new* documents that strongly prove you intend to return home.\n\n*(For a personalized checklist of documents to bring next time, download DocuMate on the App Store or Google Play!)*"
+        en: { text: "IMMIGRATION AND NATIONALITY ACT\nSECTION 214(B)\n\nDear Applicant,\n\nWe regret to inform you that your application for a nonimmigrant visa has been denied under section 214(b) of the INA. You have not established sufficient strong ties to your home country.\n\nThis decision is not permanent. You may reapply at any time if you can present compelling new evidence.", result: "### 💡 What you need to know:\n\nYour visa application was **denied**.\n\n* **The Reason:** You didn't show enough \"strong ties\" to your home country (job, property, family).\n* **The Good News:** This denial is **not permanent**.\n\n**📝 Next Steps:** Reapply with new documents proving you intend to return home.\n\n*(Download DocuMate on the App Store or Google Play!)*" },
+        fr: { text: "LOI SUR L'IMMIGRATION\nARTICLE 214(B)\n\nMadame, Monsieur,\n\nNous avons le regret de vous informer que votre demande de visa de non-immigrant a été refusée en vertu de l'article 214(b). Vous n'avez pas établi des liens suffisants avec votre pays d'origine.\n\nCette décision n'est pas définitive.", result: "### 💡 Ce que vous devez savoir :\n\nVotre demande de visa a été **refusée**.\n\n* **La raison :** Vous n'avez pas prouvé suffisamment de \"liens forts\" avec votre pays (emploi, propriété, famille).\n* **Bonne nouvelle :** Ce refus n'est **pas définitif**.\n\n**📝 Prochaines étapes :** Redéposez votre demande avec de nouveaux justificatifs.\n\n*(Téléchargez DocuMate pour préparer votre dossier !)*" },
+        de: { text: "EINWANDERUNGSGESETZ\nABSCHNITT 214(B)\n\nSehr geehrte/r Antragsteller/in,\n\nIhr Visumantrag wurde gemäß § 214(b) abgelehnt. Sie konnten keine ausreichenden Bindungen an Ihr Heimatland nachweisen.\n\nDiese Entscheidung ist nicht endgültig.", result: "### 💡 Was Sie wissen müssen:\n\nIhr Visumantrag wurde **abgelehnt**.\n\n* **Grund:** Keine ausreichenden Bindungen ans Heimatland nachgewiesen.\n* **Gute Nachricht:** Die Ablehnung ist **nicht endgültig**.\n\n*(DocuMate herunterladen, um Dokumente zu analysieren!)*" },
+        es: { text: "LEY DE INMIGRACIÓN\nSECCIÓN 214(B)\n\nEstimado solicitante,\n\nLamentamos informarle que su solicitud de visa ha sido denegada según el artículo 214(b). No ha podido demostrar vínculos suficientes con su país de origen.\n\nEsta decisión no es definitiva.", result: "### 💡 Lo que necesita saber:\n\nSu solicitud de visa fue **denegada**.\n\n* **Motivo:** No demostró vínculos suficientes con su país de origen.\n* **Buena noticia:** Esta decisión **no es definitiva**.\n\n*(¡Descargue DocuMate para analizar sus propios documentos!)*" }
       }
     };
 
+    function getDemoForLang(type) {
+      var lang = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+      var demo = DEMO_TEXTS[type];
+      return demo[lang] || demo.en;
+    }
+
     window.loadDemo = function (type) {
-      docText.value = DEMO_TEXTS[type].text;
+      var d = getDemoForLang(type);
+      docText.value = d.text;
       result.innerHTML = '';
     };
 
@@ -1013,10 +1025,13 @@
       const all = docText.value.trim();
       if (!all) { alert(window.STR?.noText || 'No text to process yet.'); return; }
 
-      // Static Demo logic
+      // Static Demo logic — search across all language variants
       let matchedResult = null;
-      for (const [key, demo] of Object.entries(DEMO_TEXTS)) {
-        if (all === demo.text) matchedResult = demo.result;
+      for (const [key, langVariants] of Object.entries(DEMO_TEXTS)) {
+        for (const variant of Object.values(langVariants)) {
+          if (all === variant.text) { matchedResult = variant.result; break; }
+        }
+        if (matchedResult) break;
       }
 
       if (matchedResult) {
